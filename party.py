@@ -18,9 +18,16 @@ def is_mel(name, email):
     False
     >>> is_mel('Mel Melitpolski', 'mel@ubermelon.com')
     True
+    >>> is_mel('MEL MELITPOLSKI', 'MEL@UBERMELON.COM')
+    True
+    >>> is_mel('mel', 'totallynotmel@ubermelon.com')
+    True
+    >>> is_mel('Melissa Jones', 'actuallynotmel@ubermelon.com')
+    False
     """
 
-    return name == "Mel Melitpolski" or email == "mel@ubermelon.com"
+    forbidden_names = ["mel melitpolski", "mel"]
+    return name.lower() in forbidden_names or email.lower() == "mel@ubermelon.com"
 
 
 def most_and_least_common_type(treats):
@@ -46,7 +53,7 @@ def most_and_least_common_type(treats):
     >>> treats = []
     >>> most_and_least_common_type(treats)
     (None, None)
-    
+
     >>> treats = [ {'type': 'appetizer'} ]
     >>> most_and_least_common_type(treats)
     ('appetizer', 'appetizer')
